@@ -4,6 +4,7 @@ import axios from "axios";
 import Navbar from "../components/Navbar";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import DataTable from "react-data-table-component";
+import { CiFilter } from "react-icons/ci";
 
 
 export default function Dashboard() {
@@ -238,7 +239,7 @@ export default function Dashboard() {
           <h1 className="text-3xl font-bold text-gray-800 text-center">
             {role === "admin" ? "Welcome Admin!" : "Welcome User!"}
           </h1>
-          <div className="flex justify-between items-center gap-4 mt-4 flex-wrap  gap-4 mt-4">
+          <div className="flex justify-between items-center gap-4 mt-4 mt-4">
           <input
             type="text"
             placeholder="Search tasks..."
@@ -250,17 +251,25 @@ export default function Dashboard() {
           <div className="">
         <button
           onClick={() => setIsFilterModalOpen(true)}
-          className="p-3 bg-purple-500 text-white rounded-md shadow-md hover:bg-purple-600 w-full sm:w-auto"
+          className="p-3 ms-3 bg-purple-500 text-white rounded-md shadow-md hover:bg-purple-600 w-full sm:w-auto"
           >
-          Filter
+           
+          
+
+<span>Filter</span>
+
+
+           
+         
         </button>
-      </div>
-          {role!=="admin"&&(
-             <button onClick={() => openModal()}  className="p-2 bg-purple-500 text-white rounded-md hover:bg-purple-600 w-full sm:w-auto"
+        {role!=="admin"&&(
+             <button onClick={() => openModal()}  className="p-3 bg-purple-500 text-white rounded-md hover:bg-purple-600 w-full sm:w-auto   ms-4"
 >
              Add New Task
            </button>
           )}
+      </div>
+       
             {/* Filter Button */}
       
       {/* Filter Modal */}
