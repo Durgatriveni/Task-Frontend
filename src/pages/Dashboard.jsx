@@ -4,7 +4,6 @@ import axios from "axios";
 import Navbar from "../components/Navbar";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import DataTable from "react-data-table-component";
-import { CiFilter } from "react-icons/ci";
 
 
 export default function Dashboard() {
@@ -239,7 +238,7 @@ export default function Dashboard() {
           <h1 className="text-3xl font-bold text-gray-800 text-center">
             {role === "admin" ? "Welcome Admin!" : "Welcome User!"}
           </h1>
-          <div className="flex justify-between items-center gap-4 mt-4 mt-4">
+          <div className="flex justify-between items-center gap-4 mt-4 flex-wrap  gap-4 mt-4">
           <input
             type="text"
             placeholder="Search tasks..."
@@ -248,28 +247,28 @@ export default function Dashboard() {
             // className="w-2/4 p-2 border rounded-md mt-4"
             className="flex-2 min-w-[200px] p-2 border rounded-md"
           />
-          <div className="">
+          <div className="flex gap-4">
         <button
           onClick={() => setIsFilterModalOpen(true)}
-          className="p-3 ms-3 bg-purple-500 text-white rounded-md shadow-md hover:bg-purple-600 w-full sm:w-auto"
+          className="p-3 bg-purple-500 text-white rounded-md shadow-md hover:bg-purple-600 w-full sm:w-auto"
           >
-           
-          
-
-<span>Filter</span>
-
-
-           
-         
+          Filter
         </button>
-        {role!=="admin"&&(
-             <button onClick={() => openModal()}  className="p-3 bg-purple-500 text-white rounded-md hover:bg-purple-600 w-full sm:w-auto   ms-4"
+        <button
+          onClick={clearFilters}
+          className="p-2 bg-gray-900 text-white rounded-md hover:bg-gray-500 w-full sm:w-auto ml-2"
+        >
+          Clear Filters
+        </button>
+     
+          {role!=="admin"&&(
+             <button onClick={() => openModal()}  className="p-2 bg-purple-500 text-white rounded-md hover:bg-purple-600 w-full sm:w-auto"
 >
              Add New Task
            </button>
           )}
-      </div>
-       
+           </div>
+          
             {/* Filter Button */}
       
       {/* Filter Modal */}
@@ -371,11 +370,10 @@ export default function Dashboard() {
         </div>
       </div>
     {isModalOpen && (
-  <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
+  <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 z-100" style={{ zIndex: 1000 }} >
     <div className="bg-white p-6 rounded-lg shadow-lg w-96">
       <h2 className="text-xl font-semibold mb-3">{editingTask ? "Edit Task" : "Add New Task"}</h2>
-      
-      <input
+      <input  
         type="text"
         placeholder="Task Name"
         value={taskName}
@@ -433,7 +431,6 @@ export default function Dashboard() {
     </div>
   </div>
 )}
-
     </>
   );
 }
