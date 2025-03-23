@@ -28,11 +28,12 @@ export default function Navbar() {
 
       {/* Logout button on the right */}
       <button
-        onClick={handleLogout}
-        className="bg-white-500 hover:bg-red-600 text-white px-4 py-2 rounded-md"
-      >
-        Logout
-      </button>
+  onClick={handleLogout}
+  className=" text-purple-600 border border-purple-600 hover:bg-purple-100 px-4 py-2 rounded-md bg-gray-100"
+>
+  Logout
+</button>
+
     </nav>
   );
 }
